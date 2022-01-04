@@ -1,4 +1,4 @@
-import React, {Fragment, useState} from "react";
+import React, {Fragment, useState, useEffect} from "react";
 import { v4 as uuidv4} from 'uuid'
 import ItemList from "../itemList/ItemList";
 import Total from '../total/Total'
@@ -6,9 +6,10 @@ import Total from '../total/Total'
 
 export default function Card(){
     const [itemList, setItemList] = useState([])
-    const [total, setTotal] = useState(0)
-    const [numPeople, setNumPeople] = useState(1)
-
+    const [total, setTotal] = useState({
+        valorTotal:0.00,
+        numPeople:1
+    })
 
     function getIndex(id){
         let num
@@ -19,14 +20,31 @@ export default function Card(){
     }
     
     function updateNumPeople(valor){
-        setNumPeople(valor)
-        updateTotal(valor)
+        setTotal(prevstate => ({
+            ...prevstate,
+            numPeople: valor
+        }))       
     }
+    // atualizar com o número de pessoas
+    useEffect(() => {
+        updateTotal(total.numPeople)
+    },[total.numPeople])
+    
+    // atualizar com o valor
+    useEffect(() => {
+        updateTotal()        
+    }, [itemList])
 
-    function updateTotal(valor, list){
-        if(list !== undefined && list.length === 0){console.log('foi')}
-        if (valor === undefined){ valor = 1}
-        let novoTotal
+    function updateTotal(){
+        // checar se existe itens
+        if(itemList.length === 0){
+            setTotal(prevstate => ({
+                ...prevstate,
+                valorTotal:0.00
+            }))
+            return
+        }
+        // criar uma lista só com os valores
         let valueList = itemList.map(e => {
             if(e.valor === '') {
                 return 0
@@ -34,12 +52,17 @@ export default function Card(){
                 return Number(e.valor)
             }
         })
+        // fazer a soma dos valores e passar para o Total
+        let novoTotal
         if (valueList.length > 0) {
             novoTotal = valueList.reduce(function(acumulador, valorAtual){
                 return acumulador + valorAtual
             })
-            novoTotal = novoTotal/valor
-            setTotal(novoTotal.toFixed(2))
+            novoTotal = novoTotal/total.numPeople
+            setTotal(prevstate => ({
+                ...prevstate,
+                valorTotal:novoTotal.toFixed(2)
+            }))
         }
     }
 
@@ -51,7 +74,6 @@ export default function Card(){
         setItemList(prevItem => {
             return [...prevItem, {nome:'',valor:'', id:uuidv4()}]
         })
-        updateTotal(numPeople)
     }
 
     function updateItem(item){
@@ -60,7 +82,6 @@ export default function Card(){
         novaList[index].nome = item.nome
         novaList[index].valor = item.valor
         setItemList(novaList)
-        updateTotal(numPeople)
     }
 
     function duplicateItem(item){
@@ -70,13 +91,12 @@ export default function Card(){
         setItemList(prevItem => {
             return [...prevItem, {nome:item.nome, valor:item.valor, id:uuidv4()}]
         })
-        updateTotal(numPeople)
+        // updateTotal(total.numPeople)
     }
 
     function deleteItem(id){
         let novaList = itemList.filter( item => item.id !== id)
         setItemList(novaList)
-        updateTotal(numPeople)
     }
     
 
@@ -84,7 +104,7 @@ export default function Card(){
 
 
     return(
-        <Fragment>
+        <div className="card">
             <ItemList 
                 lista={itemList} 
                 updateItem={updateItem} 
@@ -93,10 +113,10 @@ export default function Card(){
             />
             <button onClick={addItem}> Adicionar </button>
             <Total
-                numPeople={numPeople}
-                total={total}
+                numPeople={total.numPeople}
+                total={total.valorTotal}
                 updateNumPeople={updateNumPeople}
             />
-        </Fragment>
+        </div>
     )
 }
