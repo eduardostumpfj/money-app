@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import './Total.css'
 
 export default function Total({total,updateNumPeople, numPeople}){
     const [localPeople, setLocalPeople] = useState(1) 
@@ -14,13 +15,16 @@ export default function Total({total,updateNumPeople, numPeople}){
 
     return(
         <div className="ct-total">
-            <h2>Total / {numPeople}:</h2>
-            <h1>{total}</h1>
+            <div className="display-total">
+                <h2>Total / {numPeople}:</h2>
+                <h1>{total}</h1>
+            </div>
             <form className="numPeople" onBlur={handleNumPeople}>
                 <input
                     value={localPeople}
                     type='number'
                     placeholder='Pessoas'
+                    onSubmit={e => e.preventDefault}
                     onChange={event => {
                         setLocalPeople(event.target.value)
                     }}

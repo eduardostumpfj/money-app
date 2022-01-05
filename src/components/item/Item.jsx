@@ -41,6 +41,8 @@ function Item({nomeItem, valorItem, id, updateItem, duplicateItem, deleteItem}){
             e.target.parentNode.classList.add('off')
         }
     }
+
+
     
     return(
         <div className='item' onClick={habilitar} id={id} onBlur={handleUpdate} autoFocus>
@@ -55,6 +57,7 @@ function Item({nomeItem, valorItem, id, updateItem, duplicateItem, deleteItem}){
                     
                 ></input>
                 <input 
+                    className="valor"
                     type='number'  
                     placeholder='Valor'
                     value={valor}

@@ -1,15 +1,17 @@
 import React, {Fragment, useState, useEffect} from "react";
 import { v4 as uuidv4} from 'uuid'
+import './Card.css'
 import ItemList from "../itemList/ItemList";
 import Total from '../total/Total'
 
 
-export default function Card(){
+export default function Card({cardNome, cardTotal, cardPeople, cardId}){
     const [itemList, setItemList] = useState([])
     const [total, setTotal] = useState({
-        valorTotal:0.00,
-        numPeople:1
+        valorTotal:cardTotal,
+        numPeople:cardPeople
     })
+    const [cardName, setCardName] = useState(cardNome)
 
     function getIndex(id){
         let num
@@ -99,19 +101,25 @@ export default function Card(){
         setItemList(novaList)
     }
     
-
-
-
-
     return(
         <div className="card">
+            <form>
+                <input 
+                    className="card-name"
+                    type="text"
+                    value={cardName}
+                    onChange={event => {
+                        setCardName(event.target.value)
+                    }}
+                />
+            </form>
             <ItemList 
                 lista={itemList} 
                 updateItem={updateItem} 
                 duplicateItem={duplicateItem}
                 deleteItem={deleteItem}    
             />
-            <button onClick={addItem}> Adicionar </button>
+            <button onClick={addItem}> Adicionar Item </button>
             <Total
                 numPeople={total.numPeople}
                 total={total.valorTotal}

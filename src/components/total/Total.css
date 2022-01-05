@@ -1,0 +1,10 @@
+.ct-total{
+    display: flex;
+    flex-direction: column;
+}
+
+.display-total{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
