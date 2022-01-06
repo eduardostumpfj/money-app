@@ -2,23 +2,22 @@ import React, {useState} from "react";
 import { v4 as uuidv4} from 'uuid'
 import './Item.css'
 
-function Item({nomeItem, valorItem, id, updateItem, duplicateItem, deleteItem}){
-    const[nome, setNome] = useState(nomeItem)
-    const[valor, setValor] = useState(valorItem)
+function Item({nameItem, valueItem, id, updateItem, duplicateItem, deleteItem}){
+    const[name, setName] = useState(nameItem)
+    const[value, setValue] = useState(valueItem)
 
     function handleUpdate(){
         // excluir item caso não tenha nenhum registro
-        if(nome === '' && valor ===''){
+        if(name === '' && value ===''){
             handleDelete()
             return
         }
-        let item = {nome,valor,id}
+        let item = {name,value,id}
         updateItem(item)
     }
 
     function handleDuplicate(){
-        let unicId = uuidv4()
-        let item = {nome, valor, id:unicId}
+        let item = {name, value, id:uuidv4()}
         duplicateItem(item)
     }
 
@@ -26,7 +25,7 @@ function Item({nomeItem, valorItem, id, updateItem, duplicateItem, deleteItem}){
         deleteItem(id)
     }
 
-    function habilitar(e){
+    function enable(e){
         let buttons = document.querySelectorAll('.buttons')
         buttons.forEach(e => {
             let parent = e.parentNode
@@ -45,14 +44,14 @@ function Item({nomeItem, valorItem, id, updateItem, duplicateItem, deleteItem}){
 
     
     return(
-        <div className='item' onClick={habilitar} id={id} onBlur={handleUpdate} autoFocus>
+        <div className='item' onClick={enable} id={id} onBlur={handleUpdate} autoFocus>
             <form>
                 <input
                     type='text' 
-                    value={nome}
+                    value={name}
                     placeholder='Nome'
                     onChange={event => {
-                        setNome(event.target.value)
+                        setName(event.target.value)
                     }}
                     
                 ></input>
@@ -60,9 +59,9 @@ function Item({nomeItem, valorItem, id, updateItem, duplicateItem, deleteItem}){
                     className="valor"
                     type='number'  
                     placeholder='Valor'
-                    value={valor}
+                    value={value}
                     onChange={event => {
-                        setValor(event.target.value)
+                        setValue(event.target.value)
                     }}
                     ></input>
             </form>

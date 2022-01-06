@@ -5,13 +5,13 @@ import ItemList from "../itemList/ItemList";
 import Total from '../total/Total'
 
 
-export default function Card({cardNome, cardTotal, cardPeople, cardId}){
+export default function Card({cardName, cardTotal, cardPeople, cardId}){
     const [itemList, setItemList] = useState([])
     const [total, setTotal] = useState({
-        valorTotal:cardTotal,
+        total:cardTotal,
         numPeople:cardPeople
     })
-    const [cardName, setCardName] = useState(cardNome)
+    const [localCardName, setLocalCardName] = useState(cardName)
 
     function getIndex(id){
         let num
@@ -21,10 +21,10 @@ export default function Card({cardNome, cardTotal, cardPeople, cardId}){
         return num
     }
     
-    function updateNumPeople(valor){
+    function updateNumPeople(value){
         setTotal(prevstate => ({
             ...prevstate,
-            numPeople: valor
+            numPeople: value
         }))       
     }
     // atualizar com o número de pessoas
@@ -42,7 +42,7 @@ export default function Card({cardNome, cardTotal, cardPeople, cardId}){
         if(itemList.length === 0){
             setTotal(prevstate => ({
                 ...prevstate,
-                valorTotal:0.00
+                total:0.00
             }))
             return
         }
@@ -51,7 +51,7 @@ export default function Card({cardNome, cardTotal, cardPeople, cardId}){
             if(e.valor === '') {
                 return 0
             } else {
-                return Number(e.valor)
+                return Number(e.value)
             }
         })
         // fazer a soma dos valores e passar para o Total
@@ -63,7 +63,7 @@ export default function Card({cardNome, cardTotal, cardPeople, cardId}){
             novoTotal = novoTotal/total.numPeople
             setTotal(prevstate => ({
                 ...prevstate,
-                valorTotal:novoTotal.toFixed(2)
+                total:novoTotal.toFixed(2)
             }))
         }
     }
@@ -74,15 +74,15 @@ export default function Card({cardNome, cardTotal, cardPeople, cardId}){
         buttons.forEach(e => e.classList.add('off'))
         // adicionar um item
         setItemList(prevItem => {
-            return [...prevItem, {nome:'',valor:'', id:uuidv4()}]
+            return [...prevItem, {name:'',value:'', id:uuidv4()}]
         })
     }
 
     function updateItem(item){
         let index = getIndex(item.id)
         let novaList = [...itemList]
-        novaList[index].nome = item.nome
-        novaList[index].valor = item.valor
+        novaList[index].name = item.name
+        novaList[index].value = item.value
         setItemList(novaList)
     }
 
@@ -91,9 +91,8 @@ export default function Card({cardNome, cardTotal, cardPeople, cardId}){
         let buttons = document.querySelectorAll('.buttons')
         buttons.forEach(e => e.classList.add('off'))
         setItemList(prevItem => {
-            return [...prevItem, {nome:item.nome, valor:item.valor, id:uuidv4()}]
+            return [...prevItem, {name:item.name, value:item.value, id:uuidv4()}]
         })
-        // updateTotal(total.numPeople)
     }
 
     function deleteItem(id){
@@ -107,14 +106,14 @@ export default function Card({cardNome, cardTotal, cardPeople, cardId}){
                 <input 
                     className="card-name"
                     type="text"
-                    value={cardName}
+                    value={localCardName}
                     onChange={event => {
-                        setCardName(event.target.value)
+                        setLocalCardName(event.target.value)
                     }}
                 />
             </form>
             <ItemList 
-                lista={itemList} 
+                list={itemList} 
                 updateItem={updateItem} 
                 duplicateItem={duplicateItem}
                 deleteItem={deleteItem}    
@@ -122,7 +121,7 @@ export default function Card({cardNome, cardTotal, cardPeople, cardId}){
             <button onClick={addItem}> Adicionar Item </button>
             <Total
                 numPeople={total.numPeople}
-                total={total.valorTotal}
+                total={total.total}
                 updateNumPeople={updateNumPeople}
             />
         </div>

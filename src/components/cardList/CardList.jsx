@@ -7,7 +7,7 @@ export default function CardList({data}){
         {data.map( e => {
             return <Card 
                 key={e.cardId}
-                cardNome={e.cardNome}
+                cardName={e.cardName}
                 cardTotal = {e.cardTotal}
                 cardPeople = {e.cardPeople}
                 cardId = {e.cardId} />            

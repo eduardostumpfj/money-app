@@ -2,12 +2,12 @@ import React from "react";
 import { v4 as uuidv4} from 'uuid'
 import Item from '../item/Item'
 
-export default function ItemList({lista, updateItem, duplicateItem, deleteItem}){
+export default function ItemList({list, updateItem, duplicateItem, deleteItem}){
     return(
-        lista.map( item => {
+        list.map( item => {
             return <Item
-                nomeItem = {item.nome}
-                valorItem = {item.valor}
+                nameItem = {item.name}
+                valueItem = {item.value}
                 key={item.id}
                 id={item.id} 
                 updateItem={updateItem} 
