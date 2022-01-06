@@ -5,7 +5,7 @@ import ItemList from "../itemList/ItemList";
 import Total from '../total/Total'
 
 
-export default function Card({cardName, cardTotal, cardPeople, cardId}){
+export default function Card({cardName, cardTotal, cardPeople, cardId, activateCard}){
     const [itemList, setItemList] = useState([])
     const [total, setTotal] = useState({
         total:cardTotal,
@@ -101,7 +101,12 @@ export default function Card({cardName, cardTotal, cardPeople, cardId}){
     }
     
     return(
-        <div className="card">
+        <div
+            className="card"
+            onClick ={() => {
+                activateCard(cardId)
+            }}
+        >
             <form>
                 <input 
                     className="card-name"
