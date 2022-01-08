@@ -5,13 +5,14 @@ import ItemList from "../itemList/ItemList";
 import Total from '../total/Total'
 
 
-export default function Card({cardName, cardTotal, cardPeople, cardId, activateCard}){
-    const [itemList, setItemList] = useState([])
+export default function Card({cardName, cardTotal, cardPeople, cardId, cardItemList, activateCard, updateCardList}){
+    const [itemList, setItemList] = useState(cardItemList)
     const [total, setTotal] = useState({
         total:cardTotal,
         numPeople:cardPeople
     })
     const [localCardName, setLocalCardName] = useState(cardName)
+    const [callEffect, setCallEffetct] = useState(false)
 
     function getIndex(id){
         let num
@@ -21,12 +22,7 @@ export default function Card({cardName, cardTotal, cardPeople, cardId, activateC
         return num
     }
     
-    function updateNumPeople(value){
-        setTotal(prevstate => ({
-            ...prevstate,
-            numPeople: value
-        }))       
-    }
+
     // atualizar com o número de pessoas
     useEffect(() => {
         updateTotal(total.numPeople)
@@ -34,8 +30,26 @@ export default function Card({cardName, cardTotal, cardPeople, cardId, activateC
     
     // atualizar com o valor
     useEffect(() => {
-        updateTotal()        
+        updateTotal()    
     }, [itemList])
+    
+    // atualizar o CardList
+    useEffect(() =>{
+         updateCardList(itemList, total, localCardName)
+    },[callEffect])
+
+    function updateCardName(e){
+        setLocalCardName(e)
+        setCallEffetct(prev => { return !prev})  
+    }
+
+    function updateNumPeople(value){
+        setTotal(prevstate => ({
+            ...prevstate,
+            numPeople: value
+        })) 
+        setCallEffetct(prev => { return !prev})        
+    }
 
     function updateTotal(){
         // checar se existe itens
@@ -66,6 +80,7 @@ export default function Card({cardName, cardTotal, cardPeople, cardId, activateC
                 total:novoTotal.toFixed(2)
             }))
         }
+        setCallEffetct(prev => { return !prev})  
     }
 
     function addItem(){
@@ -76,6 +91,7 @@ export default function Card({cardName, cardTotal, cardPeople, cardId, activateC
         setItemList(prevItem => {
             return [...prevItem, {name:'',value:'', id:uuidv4()}]
         })
+        setCallEffetct(prev => { return !prev})  
     }
 
     function updateItem(item){
@@ -99,7 +115,6 @@ export default function Card({cardName, cardTotal, cardPeople, cardId, activateC
         let novaList = itemList.filter( item => item.id !== id)
         setItemList(novaList)
     }
-    
     return(
         <div
             className="card"
@@ -113,7 +128,7 @@ export default function Card({cardName, cardTotal, cardPeople, cardId, activateC
                     type="text"
                     value={localCardName}
                     onChange={event => {
-                        setLocalCardName(event.target.value)
+                        updateCardName(event.target.value)                        
                     }}
                 />
             </form>

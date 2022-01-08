@@ -10,10 +10,12 @@ function App() {
   const [selectedCard, setselectedCard] = useState({})
 
   function handleAdd(){
+    let element = {cardName:'Sem Nome', cardTotal:0.00, cardPeople:1, cardId:uuidv4(), cardItemList:[]}
     setCardList(prev => {
-      return [...prev, {cardName:'Sem Nome', cardTotal:0.00, cardPeople:1, cardId:uuidv4()}]
+      return [...prev, element]
     })
-    activateCard()
+    setselectedCard(element)
+    setActive('card') 
   }
 
   function activateCard (id) {
@@ -25,13 +27,32 @@ function App() {
     setActive('card')
   }
 
+  function updateCardList(lista, obj, name){
+    let index
+    let newCardList = cardList
+    cardList.forEach((e,i) => {
+      if (e.id === obj.id){
+        index = i
+      }
+    })
+    let element = newCardList[index]
+    element.cardName=name
+    element.cardTotal=obj.total
+    element.cardPeople=obj.numPeople
+    element.cardItemList=lista
+    setCardList(newCardList)
+  }
+  
+
   useEffect(()=>{
     if(active === 'card'){
       document.querySelector('#bt-home').classList.remove('off')
     } else if (active === 'home'){
       document.querySelector('#bt-home').classList.add('off')
     }
+    console.log(cardList)
   },[active])
+
 
   function renderContent(){
     if(active === 'home'){
@@ -46,7 +67,6 @@ function App() {
         </>
       )
     } else if (active === 'card'){
-      console.log(selectedCard)
       return (
         <Card
           key={selectedCard.cardId}
@@ -54,7 +74,9 @@ function App() {
           cardTotal = {selectedCard.cardTotal}
           cardPeople = {selectedCard.cardPeople}
           cardId = {selectedCard.cardId}
+          cardItemList = {selectedCard.cardItemList}
           activateCard={activateCard}
+          updateCardList={updateCardList}
         ></Card>
       )
     }
