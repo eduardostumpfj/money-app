@@ -5,16 +5,12 @@ import CardList from './components/cardList/CardList';
 import Card from './components/card/Card'
 
 function App() {
-  const [cardList, setCardList] = useState([])
+  const [cardList, setCardList] = useState(JSON.parse(localStorage.getItem('ls_cardList')))
   const [active, setActive] = useState('home')
   const [selectedCard, setselectedCard] = useState({})
   const [monthTotal, setMonthTotal] = useState(0.00)
+  
 
-  document.addEventListener('keydown', (event)=> {
-    if(event.key === 'Enter'){
-      event.preventDefault()
-    }
-  })
 
   // FUNÇÕES RELACIONADAS AOS MINI CARDS----------------------------------------------------------------
   function handleAdd(){
@@ -105,6 +101,7 @@ function App() {
 
   //  Atualizar o total quando mudar a lista de cards
   useEffect(()=>{
+    localStorage.setItem('ls_cardList', JSON.stringify(cardList))
     handleTotal()
   },[cardList])
 
