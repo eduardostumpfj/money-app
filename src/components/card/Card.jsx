@@ -14,6 +14,16 @@ export default function Card({cardName, cardTotal, cardPeople, cardId, cardItemL
     const [localCardName, setLocalCardName] = useState(cardName)
     const [callEffect, setCallEffetct] = useState(false)
 
+    // Gambiarra para a página não atualizar a página com "Enter"
+    let bt = document.querySelector('.card-name')
+    if(bt != null){
+        bt.addEventListener('keydown', (event)=> {
+            if(event.key === 'Enter'){
+            event.preventDefault()
+            }
+        })
+    }
+
     function getIndex(id){
         let num
         itemList.forEach((e,i) =>{

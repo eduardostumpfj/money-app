@@ -10,6 +10,13 @@ function App() {
   const [selectedCard, setselectedCard] = useState({})
   const [monthTotal, setMonthTotal] = useState(0.00)
 
+  document.addEventListener('keydown', (event)=> {
+    if(event.key === 'Enter'){
+      event.preventDefault()
+    }
+  })
+
+  // FUNÇÕES RELACIONADAS AOS MINI CARDS----------------------------------------------------------------
   function handleAdd(){
     let element = {cardName:'Sem Nome', cardTotal:0.00, cardPeople:1, cardId:uuidv4(), cardItemList:[]}
     setCardList(prev => {
@@ -20,10 +27,29 @@ function App() {
   }
 
   function deleteCard(id){
-    let newCardList = cardList.filter((e,i) => {
+    let newCardList = cardList.filter((e) => {
       return e.cardId != id
     })
     setCardList(newCardList)
+  }
+
+  function duplicateCard(id){
+    let card
+    cardList.forEach(e=> {
+      if (e.cardId === id){ card = e}
+    }) 
+    let elemento = {
+      cardName:`Copia do ${card.cardName}`,
+      cardTotal:card.cardTotal,
+      cardPeople:card.cardPeople,
+      cardId:uuidv4(),
+      cardItemList:card.cardItemList
+    }
+    setCardList(prev => {
+      return [...prev, elemento]
+    })
+    setselectedCard(elemento)
+    setActive('card') 
   }
 
   function activateCard (id) {
@@ -35,6 +61,7 @@ function App() {
     setActive('card')
   }
 
+// ATUALIZAR A LISTA DOS CARDS --------------------------------------------------------------------------
   function updateCardList(lista, obj, name, id){
     let index
     let newCardList = cardList
@@ -65,7 +92,8 @@ function App() {
     })
     setMonthTotal(novoTotal)
   }
-
+//  EFEITOS ----------------------------------------------------------------------------------------------
+  //  Mudar a interface quando atualizar o active
   useEffect(()=>{
     if(active === 'card'){
       document.querySelector('#bt-home').classList.remove('off')
@@ -75,6 +103,7 @@ function App() {
     handleTotal()
   },[active])
 
+  //  Atualizar o total quando mudar a lista de cards
   useEffect(()=>{
     handleTotal()
   },[cardList])
@@ -90,6 +119,7 @@ function App() {
             activateCard={activateCard}
             handleAdd={handleAdd}
             deleteCard={deleteCard}
+            duplicateCard={duplicateCard}
           />
           <h1 className='month-total'> TOTAL : {monthTotal}</h1>
         </>
