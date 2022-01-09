@@ -5,7 +5,7 @@ import ItemList from "../itemList/ItemList";
 import Total from '../total/Total'
 
 
-export default function Card({cardName, cardTotal, cardPeople, cardId, cardItemList, activateCard, updateCardList}){
+export default function Card({cardName, cardTotal, cardPeople, cardId, cardItemList, updateCardList, saveData}){
     const [itemList, setItemList] = useState(cardItemList)
     const [total, setTotal] = useState({
         total:cardTotal,
@@ -46,6 +46,7 @@ export default function Card({cardName, cardTotal, cardPeople, cardId, cardItemL
     // atualizar o CardList
     useEffect(() =>{
          updateCardList(itemList, total, localCardName, cardId)
+         saveData()
     },[callEffect])
 
     function updateCardName(e){
