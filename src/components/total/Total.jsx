@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import './Total.css'
 
 export default function Total({total,updateNumPeople, numPeople}){
-    const [localPeople, setLocalPeople] = useState(1) 
+    const [localPeople, setLocalPeople] = useState(numPeople) 
 
     function handleNumPeople(){
         if(localPeople === ''){

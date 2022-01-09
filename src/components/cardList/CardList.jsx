@@ -1,22 +1,23 @@
 import React from "react";
-import Card from "../card/Card";
 import MinCard from "../minCard/MinCard";
+import './CardList.css'
 
-export default function CardList({data, activateCard}){
+export default function CardList({data, activateCard, handleAdd, deleteCard}){
     return(
         <div className="card-list">
-        {data.map( e => {
+            {data.map( e => {
 
-            return <MinCard 
-            key={e.cardId}
-            cardName={e.cardName}
-            cardTotal = {e.cardTotal}
-            cardPeople = {e.cardPeople}
-            cardId = {e.cardId}
-            activateCard={activateCard}
-        /> 
-           
-        })}
+                return <MinCard 
+                key={e.cardId}
+                cardName={e.cardName}
+                cardTotal = {e.cardTotal}
+                cardPeople = {e.cardPeople}
+                cardId = {e.cardId}
+                activateCard={activateCard}
+                deleteCard={deleteCard}
+            />             
+            })}
+            <button className="bt-add-card" onClick={handleAdd}>Novo Card</button>
         </div>
     )
 }

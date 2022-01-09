@@ -35,7 +35,7 @@ export default function Card({cardName, cardTotal, cardPeople, cardId, cardItemL
     
     // atualizar o CardList
     useEffect(() =>{
-         updateCardList(itemList, total, localCardName)
+         updateCardList(itemList, total, localCardName, cardId)
     },[callEffect])
 
     function updateCardName(e){
@@ -118,9 +118,9 @@ export default function Card({cardName, cardTotal, cardPeople, cardId, cardItemL
     return(
         <div
             className="card"
-            onClick ={() => {
-                activateCard(cardId)
-            }}
+            // onClick ={() => {
+            //     activateCard(cardId)
+            // }}
         >
             <form>
                 <input 

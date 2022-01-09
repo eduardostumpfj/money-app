@@ -8,6 +8,7 @@ function App() {
   const [cardList, setCardList] = useState([])
   const [active, setActive] = useState('home')
   const [selectedCard, setselectedCard] = useState({})
+  const [monthTotal, setMonthTotal] = useState(0.00)
 
   function handleAdd(){
     let element = {cardName:'Sem Nome', cardTotal:0.00, cardPeople:1, cardId:uuidv4(), cardItemList:[]}
@@ -18,20 +19,27 @@ function App() {
     setActive('card') 
   }
 
+  function deleteCard(id){
+    let newCardList = cardList.filter((e,i) => {
+      return e.cardId != id
+    })
+    setCardList(newCardList)
+  }
+
   function activateCard (id) {
     cardList.forEach(e => {
       if(e.cardId === id){
         setselectedCard(e) 
       }
-    })  
+    })
     setActive('card')
   }
 
-  function updateCardList(lista, obj, name){
+  function updateCardList(lista, obj, name, id){
     let index
     let newCardList = cardList
     cardList.forEach((e,i) => {
-      if (e.id === obj.id){
+      if (e.cardId === id){
         index = i
       }
     })
@@ -43,6 +51,20 @@ function App() {
     setCardList(newCardList)
   }
   
+  function handleTotal(){
+    if (cardList.length === 0){
+      setMonthTotal(0.00)
+      return
+    }
+    let novoTotal
+    let valueList =  cardList.map(e => {
+      return Number(e.cardTotal)
+    })
+    novoTotal = valueList.reduce(function(acumulador, valorAtual){
+      return acumulador + valorAtual
+    })
+    setMonthTotal(novoTotal)
+  }
 
   useEffect(()=>{
     if(active === 'card'){
@@ -50,20 +72,26 @@ function App() {
     } else if (active === 'home'){
       document.querySelector('#bt-home').classList.add('off')
     }
-    console.log(cardList)
+    handleTotal()
   },[active])
+
+  useEffect(()=>{
+    handleTotal()
+  },[cardList])
 
 
   function renderContent(){
     if(active === 'home'){
       return (
         <>
-        <CardList 
-          data = {cardList}
-          className='card-list'
-          activateCard={activateCard}
-        /> 
-        <button onClick={handleAdd}>Novo card</button>
+          <CardList 
+            data = {cardList}
+            className='card-list'
+            activateCard={activateCard}
+            handleAdd={handleAdd}
+            deleteCard={deleteCard}
+          />
+          <h1 className='month-total'> TOTAL : {monthTotal}</h1>
         </>
       )
     } else if (active === 'card'){
@@ -81,6 +109,9 @@ function App() {
       )
     }
   }
+
+
+
   return (
     <Fragment>
       <div>
