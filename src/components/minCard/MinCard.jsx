@@ -37,9 +37,9 @@ export default function MinCard({activateCard, cardId, cardPeople, cardTotal, ca
                 <div className="bt-more" onClick={handleMore}></div>
                 <div className="mini-body" onClick ={() => {activateCard(cardId)}}>                    
                     <h1 className="mini-card-name"> {cardName} </h1>
-                    <div className="display-total">
-                        <h2>Total / {cardPeople}:</h2>
-                        <h1>{cardTotal}</h1>
+                    <div className="mini-total">
+                        <h2 className="mini-total-txt">total / {cardPeople}:</h2>
+                        <h1 className="mini num-total"><span>R$</span> {cardTotal}</h1>
                     </div>
                 </div>
             </div>

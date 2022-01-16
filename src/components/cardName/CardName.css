@@ -1,0 +1,8 @@
+.card-name{
+    font-family: 'josefin Slab', serif;
+}
+
+.card-name input:focus{
+    border-radius: 0;
+    outline: solid 2px var(--cr-main);
+}

@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react/cjs/react.development";
+import './CardName.css'
 
 export default function CardName({cardName, updateCardName}){
     const [name, setName] = useState(cardName)
@@ -10,7 +11,7 @@ export default function CardName({cardName, updateCardName}){
         updateCardName(name)
     }
     return(
-        <form>
+        <form className="card-name">
             <input 
                 maxLength='20'
                 className="card-name"
