@@ -1,8 +1,9 @@
-import React, {Fragment, useState, useEffect} from "react";
+import React, {useState, useEffect} from "react";
 import { v4 as uuidv4} from 'uuid'
 import './Card.css'
 import ItemList from "../itemList/ItemList";
 import Total from '../total/Total'
+import CardName from "../cardName/CardName";
 
 
 export default function Card({cardName, cardTotal, cardPeople, cardId, cardItemList, updateCardList, saveData}){
@@ -50,6 +51,7 @@ export default function Card({cardName, cardTotal, cardPeople, cardId, cardItemL
     },[callEffect])
 
     function updateCardName(e){
+        console.log(e)
         setLocalCardName(e)
         setCallEffetct(prev => { return !prev})  
     }
@@ -127,22 +129,11 @@ export default function Card({cardName, cardTotal, cardPeople, cardId, cardItemL
         setItemList(novaList)
     }
     return(
-        <div
-            className="card"
-            // onClick ={() => {
-            //     activateCard(cardId)
-            // }}
-        >
-            <form>
-                <input 
-                    className="card-name"
-                    type="text"
-                    value={localCardName}
-                    onChange={event => {
-                        updateCardName(event.target.value)                        
-                    }}
-                />
-            </form>
+        <div className="card">
+            <CardName
+                cardName={cardName}
+                updateCardName={updateCardName}
+            />
             <ItemList 
                 list={itemList} 
                 updateItem={updateItem} 
