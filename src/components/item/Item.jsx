@@ -12,6 +12,7 @@ function Item({nameItem, valueItem, id, updateItem, duplicateItem, deleteItem}){
             handleDelete()
             return
         }
+        
         let item = {name,value,id}
         updateItem(item)
     }
@@ -65,8 +66,7 @@ function Item({nameItem, valueItem, id, updateItem, duplicateItem, deleteItem}){
                     }}
                     ></input>
             </form>
-            <div className="buttons">
-                <button className='salvar' onClick={handleUpdate}>Salvar</button>
+            <div className="buttons off">
                 <button className='duplicar' onClick={handleDuplicate}> Duplicar </button>
                 <button className='deletar' onClick={handleDelete}> Deletar </button>
             </div>

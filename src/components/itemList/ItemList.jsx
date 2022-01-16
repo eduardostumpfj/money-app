@@ -1,11 +1,11 @@
 import React from "react";
-import { v4 as uuidv4} from 'uuid'
 import Item from '../item/Item'
 
-export default function ItemList({list, updateItem, duplicateItem, deleteItem}){
+export default function ItemList({list, updateItem, duplicateItem, deleteItem, addItem}){
     return(
-        list.map( item => {
-            return <Item
+        <div className="item-list">
+            {list.map( item => {
+                return <Item
                 nameItem = {item.name}
                 valueItem = {item.value}
                 key={item.id}
@@ -13,6 +13,8 @@ export default function ItemList({list, updateItem, duplicateItem, deleteItem}){
                 updateItem={updateItem} 
                 deleteItem={deleteItem}
                 duplicateItem={duplicateItem}/>
-        })
+            })}
+            <button onClick={addItem}> Adicionar Item </button>
+        </div>
     )
 }

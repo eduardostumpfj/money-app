@@ -51,7 +51,6 @@ export default function Card({cardName, cardTotal, cardPeople, cardId, cardItemL
     },[callEffect])
 
     function updateCardName(e){
-        console.log(e)
         setLocalCardName(e)
         setCallEffetct(prev => { return !prev})  
     }
@@ -138,9 +137,10 @@ export default function Card({cardName, cardTotal, cardPeople, cardId, cardItemL
                 list={itemList} 
                 updateItem={updateItem} 
                 duplicateItem={duplicateItem}
-                deleteItem={deleteItem}    
+                deleteItem={deleteItem}
+                addItem={addItem}    
             />
-            <button onClick={addItem}> Adicionar Item </button>
+
             <Total
                 numPeople={total.numPeople}
                 total={total.total}
