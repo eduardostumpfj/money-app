@@ -1,17 +1,37 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import './Total.css'
 
 export default function Total({total,updateNumPeople, numPeople}){
     const [localPeople, setLocalPeople] = useState(numPeople) 
 
-    function handleNumPeople(){
-        if(localPeople === ''){
-            setLocalPeople(1)
-            updateNumPeople(1)
-            return
-        }
-        updateNumPeople(localPeople)        
+    function txtPessoas(){
+        if(localPeople > 1){
+            return 'Pessoas'
+        } else return 'Pessoa'
     }
+
+    function handleSub(){
+        let newPeople = localPeople
+        newPeople = newPeople -1
+
+        setLocalPeople(newPeople)
+    }
+
+    function handleSum(){
+        let newPeople = localPeople
+        newPeople += 1
+        setLocalPeople(newPeople)
+
+    }
+    // LCOAL PEOPLE = checar a quantidade para remover o botão sub e atualizar o número no card
+    useEffect(()=>{
+        if(localPeople <= 1){
+            document.querySelector('.sub').classList.add('off')
+        } else {
+            document.querySelector('.sub').classList.remove('off')
+        }    
+        updateNumPeople(localPeople) 
+    }, [localPeople])
 
     return(
         <div className="ct-total">
@@ -19,18 +39,14 @@ export default function Total({total,updateNumPeople, numPeople}){
                 <h2>Total / {numPeople}:</h2>
                 <h1>{total}</h1>
             </div>
-            <form className="numPeople" onBlur={handleNumPeople}>
-                <input
-                    value={localPeople}
-                    type='number'
-                    placeholder='Pessoas'
-                    onSubmit={e => e.preventDefault}
-                    onChange={event => {
-                        setLocalPeople(event.target.value)
-                    }}
-                ></input>
-                <label> Número de Pessoas </label>
-            </form>
+            <div className="num-people">
+                <p>Dividir em:</p>
+                <div className="bt-area">
+                    <button className="button sub" onClick={handleSub}></button>
+                    <h1> {localPeople} {txtPessoas()}</h1>
+                    <button className="button sum" onClick={handleSum}></button>
+                </div>
+            </div>
         </div>
     )
 }

@@ -8,3 +8,41 @@
     align-items: center;
     justify-content: space-around;
 }
+.bt-area{
+    display: flex;
+    align-items: center;
+    gap:20px;
+}
+
+.num-people{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+.num-people p{
+    color: var(--cr-light);
+    font-weight: 600;
+    margin: 0;
+}
+
+.bt-area{
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr;
+}
+
+.bt-area h1{
+    grid-column: 2 / 3 ;
+    text-align: center;
+}
+.sub{
+    grid-column:  1 / 2;
+    background-image:url(../../assets/ic_dec.png) ;
+    background-repeat: no-repeat;
+    background-position: center ;
+}
+.sum{
+    grid-column:  3 / 4;
+    background-image:url(../../assets/ic_inc.png) ;
+    background-repeat: no-repeat;
+    background-position: center ;
+}
