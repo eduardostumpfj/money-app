@@ -1,10 +1,25 @@
+:root{
+  --cr-main:#543C52;
+  --cr-bg:#F1E8E6;
+  --cr-dark:#361D32;
+  --cr-medium: #846A83;
+  --cr-light:#CDB7CE;
+  --card-width: 360px;
+  --mini-card-height:200px;
+}
+
+
+
 body{
-  background: rgb(234, 237, 238);
+  font-family: 'Josefin Slab', serif;
+  background: var(--cr-bg);
 }
 
 .card-list{
+  margin: 20px;
   display: flex;
   flex-wrap: wrap;
+  gap: 20px;
 }
 
 .month-total{
@@ -13,3 +28,6 @@ body{
   text-align: center;
 }
 
+.off{
+  display: none;
+}

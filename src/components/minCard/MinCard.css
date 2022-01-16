@@ -1,3 +1,76 @@
-.bts-option{
+.full-mini-card{
+    display: flex;
+}
+
+.mini-card{
+    cursor: pointer;
+    position:relative;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    width: var(--card-width);
+    height: var(--mini-card-height);
+    box-shadow: 0px 5px 8px rgba(0,0,0, 10%) ;
+}
+
+/* BOTÕES------------------------------------------------------------------------------------------------------- */
+.bt-more{
+    background-image: url(../../assets/ic_more.png);
+    background-repeat: no-repeat;
+    background-position: center ;
+    z-index: 10;
+    width: 50px;
+    height: 50px;
     align-self: flex-end;
+    position:absolute;
+}
+
+.bts-option{
+    margin-left:10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-self: flex-start;
+
+}
+
+.button {
+    cursor:pointer;
+    background-color: var(--cr-main);
+    width: 36px;
+    height: 36px;
+    border:none;
+    box-shadow: -4px 4px 0 var(--cr-light);
+    transition: transform 0.2s;
+    transition: box-shadow 0.2s;
+}
+.button:hover{
+    transform: scale(1.1) translateX(-2px);
+    border: none;
+    background-color: var(--cr-dark);
+    box-shadow: -0px 4px 0 var(--cr-light);
+}
+.delete{
+    background-image:url(../../assets/ic_delete.png) ;
+    background-repeat: no-repeat;
+    background-position: center ;
+}
+.duplicate{
+    background-image:url(../../assets/ic_duplicate.png) ;
+    background-repeat: no-repeat;
+    background-position: center ;
+}
+
+
+
+/* ------------------------------------------------------------------------------------------------------ */
+.mini-card-name{
+    position: relative;
+    padding: 20px 0px;
+    text-align: center;
+    width: 100%;
+    border: none;
+    color: var(--cr-main);
+    font-weight: 800;
+    font-size: 2em;
 }

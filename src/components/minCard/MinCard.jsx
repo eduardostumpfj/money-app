@@ -9,21 +9,44 @@ export default function MinCard({activateCard, cardId, cardPeople, cardTotal, ca
     function handleDuplicate(){
         duplicateCard(cardId)
     }
+
+    function handleMore(element){
+        let bts = document.querySelectorAll('.bts-option')
+        let btsMore = document.querySelectorAll('.bt-more')
+        // Habilitar os outros botões
+        btsMore.forEach( i => {
+            if(i.classList.contains('off')){
+                i.classList.remove('off')
+            }
+        })
+
+        bts.forEach(e => {
+            if(e.parentNode.id !== cardId){
+                e.classList.add('off')
+            } else {
+                element.target.classList.add('off')
+                e.classList.remove('off')
+            }
+        })
+
+    }
+
     return (
-        <div className="card">
-            <div className="bts-option">
-                <button className="del" onClick={handleDelete}>Deletar</button>      
-                <button className="del" onClick={handleDuplicate}>Duplicar</button>      
+        <div className='full-mini-card' id={cardId}>      
+            <div className="mini-card">
+                <div className="bt-more" onClick={handleMore}></div>
+                <div className="mini-body" onClick ={() => {activateCard(cardId)}}>                    
+                    <h1 className="mini-card-name"> {cardName} </h1>
+                    <div className="display-total">
+                        <h2>Total / {cardPeople}:</h2>
+                        <h1>{cardTotal}</h1>
+                    </div>
+                </div>
             </div>
 
-            <div onClick ={() => {
-                activateCard(cardId)
-            }}>
-                <h1 className="card-name"> {cardName}</h1>
-                <div className="display-total">
-                    <h2>Total / {cardPeople}:</h2>
-                    <h1>{cardTotal}</h1>
-                </div>
+            <div className="bts-option off">
+                <button className=" button delete" onClick={handleDelete}></button>      
+                <button className="button duplicate" onClick={handleDuplicate}></button>      
             </div>
         </div>    
     )

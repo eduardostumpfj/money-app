@@ -6,9 +6,8 @@
     text-align: center;
     background: white;
     padding: 20px;
-    width: 440px;
-    height: 215px;
-    margin:20px;
+    width: var(--card-width);
+    height: var(--mini-card-height);
     border:none;
     box-shadow: 0px 5px 8px rgba(0,0,0, 10%) ;
 }
