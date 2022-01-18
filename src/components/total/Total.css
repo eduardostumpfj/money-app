@@ -1,12 +1,31 @@
 .ct-total{
-    display: flex;
+    padding-bottom: 10px;
+    align-self: end;
+    position: relative;
+    display:flex;
     flex-direction: column;
 }
 
+.ct-total::after{
+    content:'';
+    position: absolute;
+    width:100%;
+    border-bottom: dashed 2px var(--cr-main);
+    top: -15px;
+    left: 0px;
+}
+
 .display-total{
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
+    display: grid;
+    grid-template-columns: 35% 65%;
+    align-items: end;
+}
+.num-total{
+    justify-self: end;
+    padding-right: 20px;
+}
+.total-txt{
+    padding-bottom: 5px;
 }
 .bt-area{
     display: flex;

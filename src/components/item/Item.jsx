@@ -46,29 +46,34 @@ function Item({nameItem, valueItem, id, updateItem, duplicateItem, deleteItem}){
     
     return(
         <div className='item' onClick={enable} id={id} onBlur={handleUpdate} autoFocus>
-            <form>
-                <input
-                    type='text' 
-                    value={name}
-                    placeholder='Nome'
-                    onChange={event => {
-                        setName(event.target.value)
-                    }}
-                    
-                ></input>
-                <input 
-                    className="valor"
-                    type='number'  
-                    placeholder='Valor'
-                    value={value}
-                    onChange={event => {
-                        setValue(event.target.value)
-                    }}
+            <div className='on'>
+                <form className='item-form'>
+                    <input
+                        maxLength='10'
+                        className='item-name'
+                        type='text' 
+                        value={name}
+                        placeholder='Nome'
+                        onChange={event => {
+                            setName(event.target.value)
+                        }}
+                        
                     ></input>
-            </form>
+                    <input 
+                        className="item-value"
+                        type='number'  
+                        placeholder='Valor'
+                        max='100'
+                        value={value}
+                        onChange={event => {
+                            setValue(event.target.value)
+                        }}
+                        ></input>
+                </form>
+            </div>
             <div className="buttons off">
-                <button className='duplicar' onClick={handleDuplicate}> Duplicar </button>
-                <button className='deletar' onClick={handleDelete}> Deletar </button>
+                <button className='button duplicate' onClick={handleDuplicate}></button>
+                <button className='button delete' onClick={handleDelete}></button>
             </div>
         </div>
     )

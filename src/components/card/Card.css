@@ -1,7 +1,8 @@
 .card{
     background: white;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-rows: 8% 73% 19%;
+    height: 90vh;
     padding: 20px;
     width: 360px;
     margin:20px;
@@ -9,10 +10,4 @@
 }
 .card:hover{
     cursor:pointer;
-}
-.card-name{
-    text-align: center;
-    width: 100%;
-    border: none;
-    font-size: 1.5em;
 }

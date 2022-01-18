@@ -1,0 +1,28 @@
+.item-list{
+    padding: 5px 0px 10px 0px;
+    grid-row: 2 / 3;
+    display: grid;
+    grid-template-rows: 93% 7%;
+}
+.items{
+    display: flex;
+    flex-direction: column;
+    overflow-x: scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.items::-webkit-scrollbar{
+    display: none;
+}
+
+.bt-add-item{
+    cursor: pointer;
+    color: var(--cr-medium);
+    font-family: 'Josefin Slab', serif;
+    font-weight: 700;
+    font-size: 1.5em;
+    text-align: start;
+    border: none;
+    background: white;
+}

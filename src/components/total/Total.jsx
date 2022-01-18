@@ -36,8 +36,8 @@ export default function Total({total,updateNumPeople, numPeople}){
     return(
         <div className="ct-total">
             <div className="display-total">
-                <h2>Total / {numPeople}:</h2>
-                <h1>{total}</h1>
+                <h2 className="total-txt">total / {numPeople}:</h2>
+                <h1 className="num-total"><span>R$</span> {total}</h1>
             </div>
             <div className="num-people">
                 <p>Dividir em:</p>

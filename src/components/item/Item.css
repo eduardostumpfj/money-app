@@ -1,11 +1,7 @@
-.off{
-    display:none;
-}
 
 .item{
-    padding: 10px;
-    margin-bottom: 10px;
-    box-shadow: 0px 5px 8px rgba(0,0,0, 10%) ;
+    padding: 10px 0px;
+    /* margin-bottom: 10px; */
 }
 .valor{
     text-align: end;
@@ -14,3 +10,44 @@
 input{
     border: none;
 }
+
+.buttons{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.item-form{
+    display: grid;
+    grid-template-columns: 60% 40%;
+}
+.item-name{
+    padding-left: 5px;
+    font-size: 1.5em;
+    color: var(--cr-medium);
+    font-weight: 900;
+}
+.item-value{
+    padding-right:5px ;
+    text-align: end;
+    font-size: 2em;
+    color: var(--cr-main);
+    font-weight: 900;
+}
+.item-value::-webkit-outer-spin-button,
+.item-value::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.on{
+    margin-bottom: 10px;
+    padding: 5px 0px;
+    width: 98%;
+    border: solid var(--cr-dark) 2px;
+}
+
+.off{
+    display:none;
+}
+
