@@ -40,30 +40,38 @@ function Item({nameItem, valueItem, id, updateItem, duplicateItem, deleteItem}){
         if (e.target.classList.contains('duplicar')){
             e.target.parentNode.classList.add('off')
         }
+        
     }
 
-
+    function handleFocus(e){
+        let cts = document.querySelectorAll('.ct-form')
+        // remover todos os ativos 
+        cts.forEach(element => {
+            element.classList.remove('on')            
+        })
+        e.target.parentNode.parentNode.classList.add('on')
+    }
     
     return(
         <div className='item' onClick={enable} id={id} onBlur={handleUpdate} autoFocus>
-            <div className='on'>
-                <form className='item-form'>
+            <div className='ct-form'>
+                <form className='item-form' onFocus={handleFocus}>
                     <input
                         maxLength='10'
                         className='item-name'
                         type='text' 
                         value={name}
-                        placeholder='Nome'
+                        placeholder='nome'
                         onChange={event => {
                             setName(event.target.value)
                         }}
                         
                     ></input>
                     <input 
+                        max='2'
                         className="item-value"
                         type='number'  
-                        placeholder='Valor'
-                        max='100'
+                        placeholder='valor'
                         value={value}
                         onChange={event => {
                             setValue(event.target.value)

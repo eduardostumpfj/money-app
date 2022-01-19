@@ -1,7 +1,8 @@
 
 .item{
-    padding: 10px 0px;
-    /* margin-bottom: 10px; */
+    cursor: pointer;
+    padding: 0px 0px;
+    margin-top: 10px;
 }
 .valor{
     text-align: end;
@@ -15,6 +16,8 @@ input{
     display: flex;
     flex-direction: row;
     gap: 10px;
+    margin-top: 5px;
+    margin-left: 10px;
 }
 
 .item-form{
@@ -27,24 +30,51 @@ input{
     color: var(--cr-medium);
     font-weight: 900;
 }
+input::placeholder{
+    color: var(--cr-light);
+    font-size: 1em;
+}
+
+input:focus{
+    outline: none;
+}
+
 .item-value{
-    padding-right:5px ;
+    padding:5px 5px 5px 0px ;
     text-align: end;
     font-size: 2em;
     color: var(--cr-main);
     font-weight: 900;
 }
+.item-value::placeholder{
+    font-size: .8em;
+}
+
+/* desabilitar as setas */
 .item-value::-webkit-outer-spin-button,
 .item-value::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
 
+.ct-form{
+    margin-bottom: 0px;
+    padding: 0px 0px;
+    width: 97%;
+    margin-left:5px ;
+}
+
 .on{
-    margin-bottom: 10px;
-    padding: 5px 0px;
-    width: 98%;
-    border: solid var(--cr-dark) 2px;
+    position: relative;
+    outline: solid var(--cr-dark) 2px;
+}
+.on::after{
+    content:'';
+    position:absolute;
+    border-left:solid var(--cr-dark) 2px;
+    height: 70%;
+    top:5px;
+    left: 60%;
 }
 
 .off{
