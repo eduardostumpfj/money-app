@@ -41,8 +41,7 @@
     height: 36px;
     border:none;
     box-shadow: -4px 4px 0 var(--cr-light);
-    transition: transform 0.2s;
-    transition: box-shadow 0.2s;
+    transition: transform 0.2s,  box-shadow 0.2s;
 }
 .button:hover{
     transform: scale(1.1) translateX(-2px);

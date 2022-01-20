@@ -40,7 +40,7 @@ export default function Total({total,updateNumPeople, numPeople}){
                 <h1 className="num-total"><span>R$</span> {total}</h1>
             </div>
             <div className="num-people">
-                <p>Dividir em:</p>
+                <p>dividir em:</p>
                 <div className="bt-area">
                     <button className="button sub" onClick={handleSub}></button>
                     <h1> {localPeople} {txtPessoas()}</h1>

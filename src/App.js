@@ -3,6 +3,7 @@ import './App.css';
 import { v4 as uuidv4} from 'uuid'
 import CardList from './components/cardList/CardList';
 import Card from './components/card/Card'
+import Menu from './components/menu/Menu'
 
 function App() {
   // VERIFICAR SE EXITE DADO SALVO, CASO NÃO EXISTA, COMEÇAR DO ZERO
@@ -101,11 +102,11 @@ function App() {
 //  EFEITOS ----------------------------------------------------------------------------------------------
   //  Mudar a interface quando atualizar o active
   useEffect(()=>{
-    if(active === 'card'){
-      document.querySelector('#bt-home').classList.remove('off')
-    } else if (active === 'home'){
-      document.querySelector('#bt-home').classList.add('off')
-    }
+    // if(active === 'card'){
+    //   document.querySelector('#bt-home').classList.remove('off')
+    // } else if (active === 'home'){
+    //   document.querySelector('#bt-home').classList.add('off')
+    // }
     handleTotal()
   },[active])
 
@@ -119,7 +120,7 @@ function App() {
   function renderContent(){
     if(active === 'home'){
       return (
-        <>
+        <>          
           <CardList 
             data = {cardList}
             className='card-list'
@@ -128,7 +129,6 @@ function App() {
             deleteCard={deleteCard}
             duplicateCard={duplicateCard}
           />
-          <h1 className='month-total'> TOTAL : {monthTotal}</h1>
         </>
       )
     } else if (active === 'card'){
@@ -151,14 +151,22 @@ function App() {
 
 
   return (
-    <Fragment>
-      <div>
-        <button id='bt-home'onClick={() => {setActive('home')}}> Home </button>
-      </div>
+    <div className='ct-all'>
+      <Menu
+        active={active}
+        setActive={setActive}
+        monthTotal={monthTotal}
+      ></Menu>
+      {/* <div className='side-menu'>
+        <button id='bt-home' onClick={() => {setActive('home')}}>
+           <div className='bt-home-icon'></div>
+           <p> voltar </p>  
+        </button>
+      </div> */}
       <div className='conteiner'>
         {renderContent()}
       </div>
-    </Fragment>
+    </div>
   );
 }
 
