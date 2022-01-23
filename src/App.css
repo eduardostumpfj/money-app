@@ -18,7 +18,7 @@
 body{
   font-family: 'Josefin Slab', serif;
   background: var(--cr-bg);
-  overflow: hidden;
+  /* overflow: hidden; */
   width: 100vw;
   height: 100vh;
   display: grid;
@@ -28,14 +28,12 @@ body{
 .ct-all{
   width: 100%;
   display: grid;
-  grid-template-columns: 20% 80%;
+  grid-template-columns: minmax(150px, 20%) 80%;
   align-items: center;
   justify-content: center;
 }
 
 .conteiner{
-  /* width: 100vw; */
-  /* height: 100vh; */
   display: grid;
   align-items:center;
   justify-content: center;
@@ -67,4 +65,17 @@ body{
 .num-total span{
   color:var(--cr-medium);
   font-size: .3em;
+}
+
+@media screen and (max-width: 525px){
+  .ct-all{
+    height: 100vh;
+    width: 100vw;
+    grid-template-rows: 70px calc(100% - 70px );
+    grid-template-columns: none;
+    align-items: start;
+  }
+  .card-list{
+    flex-direction: column;
+  }
 }

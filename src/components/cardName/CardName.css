@@ -1,4 +1,5 @@
 .card-name{
+    background: white;
     align-self: top;
     position: relative;
     top: 0px;
@@ -22,4 +23,15 @@
     border-bottom: dashed 2px var(--cr-main);
     bottom: 2px;
     left: 0px;
+}
+
+@media screen and (max-width: 525px){
+    .card-name{
+        align-self: center;
+    }
+    .card-name::after{
+        bottom: -13px;
+        width: 90%;
+        left: 5%;
+    }
 }

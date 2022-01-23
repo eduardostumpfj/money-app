@@ -1,4 +1,6 @@
 .ct-total{
+    background: white;
+    padding-top: 10px;
     padding-bottom: 10px;
     align-self: end;
     position: relative;
@@ -11,7 +13,7 @@
     position: absolute;
     width:100%;
     border-bottom: dashed 2px var(--cr-main);
-    top: -15px;
+    top: 0px;
     left: 0px;
 }
 
@@ -65,4 +67,17 @@
     background-image:url(../../assets/ic_inc.png) ;
     background-repeat: no-repeat;
     background-position: center ;
+}
+
+@media screen and (max-width: 525px){
+    .ct-total{
+        align-self: start;
+    }
+    .display-total{
+        margin-top: 10px;
+    }
+    .ct-total::after{
+        width: 90%;
+        left: 5%;
+    }
 }

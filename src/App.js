@@ -157,12 +157,6 @@ function App() {
         setActive={setActive}
         monthTotal={monthTotal}
       ></Menu>
-      {/* <div className='side-menu'>
-        <button id='bt-home' onClick={() => {setActive('home')}}>
-           <div className='bt-home-icon'></div>
-           <p> voltar </p>  
-        </button>
-      </div> */}
       <div className='conteiner'>
         {renderContent()}
       </div>

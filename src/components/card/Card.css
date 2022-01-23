@@ -1,13 +1,20 @@
 .card{
     background: white;
     display: grid;
-    grid-template-rows: 8% 73% 19%;
+    grid-template-rows: minmax(50px, 8%) 73% minmax(125px, 19%);
     height: 90vh;
     padding: 20px;
     width: 340px;
     /* margin:20px; */
     box-shadow: 0px 5px 8px rgba(0,0,0, 10%) ;
 }
-/* .card:hover{
-    cursor:pointer;
-} */
+
+@media screen and (max-width: 525px){
+    .card{
+        grid-template-rows: minmax(50px, 8%) minmax(65%, 100% ) minmax(125px, 19%);
+        height: calc(100vh - 70px);
+        width: 100vw;
+        padding: 0;
+        box-shadow: none;
+    }
+}
