@@ -108,3 +108,9 @@
     justify-self:end;
     padding-right: 20px;
 }
+
+@media screen and (max-width: 525px){
+    .mini{
+        margin-right: 20px;
+    }
+}

@@ -8,6 +8,7 @@ export default function Menu({active, setActive, monthTotal}){
     }
 
     function renderMenu(){
+        let localMonth = Number(monthTotal).toFixed(2)
         if(active === 'card'){
             return (
                 <button id='bt-home' onClick={handleActive}>
@@ -19,7 +20,7 @@ export default function Menu({active, setActive, monthTotal}){
             return (
                     <div className="menu-total">
                         <h1 className='menu-total-txt'> total </h1>
-                        <h1 className="mini num-total"><span>R$</span> {monthTotal}</h1>
+                        <h1 className="mini menu"><span>R$</span> {localMonth}</h1>
                     </div>
             )
         }

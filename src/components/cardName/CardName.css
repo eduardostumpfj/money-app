@@ -1,6 +1,7 @@
 .card-name{
     background: white;
     align-self: top;
+    justify-self: center;
     position: relative;
     top: 0px;
     width: 100%;
@@ -27,11 +28,11 @@
 
 @media screen and (max-width: 525px){
     .card-name{
+        width: 90%;
         align-self: center;
     }
     .card-name::after{
         bottom: -13px;
-        width: 90%;
-        left: 5%;
+        width: 100%;
     }
 }

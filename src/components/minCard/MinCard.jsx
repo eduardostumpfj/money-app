@@ -39,7 +39,7 @@ export default function MinCard({activateCard, cardId, cardPeople, cardTotal, ca
                     <h1 className="mini-card-name"> {cardName} </h1>
                     <div className="mini-total">
                         <h2 className="mini-total-txt">total / {cardPeople}:</h2>
-                        <h1 className="mini num-total"><span>R$</span> {cardTotal}</h1>
+                        <h1 className="num-total mini"><span>R$</span> {cardTotal}</h1>
                     </div>
                 </div>
             </div>

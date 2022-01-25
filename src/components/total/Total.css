@@ -75,9 +75,13 @@
     }
     .display-total{
         margin-top: 10px;
+        padding: 0px 5%;
     }
     .ct-total::after{
         width: 90%;
         left: 5%;
+    }
+    .num-total{
+        padding-right: 0;
     }
 }

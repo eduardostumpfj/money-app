@@ -2,7 +2,7 @@
     padding: 5px 0px 10px 0px;
     grid-row: 2 / 3;
     display: grid;
-    grid-template-rows: 93% 7%;
+    grid-template-rows: 93% 50px;
 }
 .items{
     display: flex;
@@ -25,4 +25,14 @@
     text-align: start;
     border: none;
     background: white;
+    transition: background 0.2s;
+}
+.bt-add-item:hover{
+    background: rgba(0,0,0, 3%);
+}
+
+@media screen and (max-width: 525px){
+    .item-list{
+        padding: 5px 5% 10px 5%;
+    }
 }

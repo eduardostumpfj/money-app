@@ -28,7 +28,7 @@ body{
 .ct-all{
   width: 100%;
   display: grid;
-  grid-template-columns: minmax(150px, 20%) 80%;
+  grid-template-columns: minmax(150px, 15%) 85%;
   align-items: center;
   justify-content: center;
 }
@@ -59,12 +59,17 @@ body{
 .num-total{
   color: var(--cr-red);
   font-weight: 900;
-  font-size: 3em;
+  font-size: 2.5em;
 }
 
 .num-total span{
   color:var(--cr-medium);
   font-size: .3em;
+  text-align: end;
+}
+
+.mini{
+  font-size: 2.2;
 }
 
 @media screen and (max-width: 525px){
