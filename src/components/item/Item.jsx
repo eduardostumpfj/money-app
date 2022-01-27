@@ -67,14 +67,18 @@ function Item({nameItem, valueItem, id, updateItem, duplicateItem, deleteItem}){
                         }}
                         
                     ></input>
-                    <input 
+                    <input
                         max='2'
                         className="item-value"
                         type='number'  
                         placeholder='valor'
                         value={value}
                         onChange={event => {
-                            setValue(event.target.value)
+                            if(event.target.value.length > 8){
+                                return false
+                            } else{                                
+                                setValue(event.target.value)
+                            }
                         }}
                         ></input>
                 </form>
