@@ -1,5 +1,4 @@
-import React from "react";
-import { useState } from "react/cjs/react.development";
+import React, {useState} from "react";
 import './CardName.css'
 
 export default function CardName({cardName, updateCardName}){

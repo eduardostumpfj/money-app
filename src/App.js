@@ -102,11 +102,6 @@ function App() {
 //  EFEITOS ----------------------------------------------------------------------------------------------
   //  Mudar a interface quando atualizar o active
   useEffect(()=>{
-    // if(active === 'card'){
-    //   document.querySelector('#bt-home').classList.remove('off')
-    // } else if (active === 'home'){
-    //   document.querySelector('#bt-home').classList.add('off')
-    // }
     handleTotal()
   },[active])
 
