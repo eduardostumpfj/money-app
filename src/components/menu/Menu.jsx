@@ -20,7 +20,7 @@ export default function Menu({active, setActive, monthTotal}){
             return (
                     <div className="menu-total">
                         <h1 className='menu-total-txt'> total </h1>
-                        <h1 className="mini menu"><span>R$</span> {localMonth}</h1>
+                        <h1 className="mini menu">{localMonth}</h1>
                     </div>
             )
         }

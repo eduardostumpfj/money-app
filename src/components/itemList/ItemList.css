@@ -31,7 +31,7 @@
     background: rgba(0,0,0, 3%);
 }
 
-@media screen and (max-width: 525px){
+@media screen and (max-width: 530px){
     .item-list{
         padding: 5px 5% 10px 5%;
     }

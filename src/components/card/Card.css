@@ -1,19 +1,18 @@
 .card{
     background: white;
     display: grid;
-    grid-template-rows: minmax(50px, 8%) 73% minmax(125px, 19%);
+    grid-template-rows: 50px 1fr 125px;
     height: 90vh;
     padding: 20px;
     width: 340px;
-    /* margin:20px; */
     box-shadow: 0px 5px 8px rgba(0,0,0, 10%) ;
 }
 
-@media screen and (max-width: 525px){
+@media screen and (max-width: 530px){
     .card{
-        grid-template-rows: minmax(50px, 8%) minmax(65%, 100% ) minmax(125px, 19%);
-        height: calc(100vh - 70px);
-        width: 100vw;
+        grid-template-rows: 50px 1fr 125px;
+        height: calc(99.5vh - 60px);
+        width: 99.5vw;
         padding: 0;
         box-shadow: none;
     }

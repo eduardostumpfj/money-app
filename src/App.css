@@ -5,8 +5,9 @@
   --cr-medium: #846A83;
   --cr-light:#CDB7CE;
   --cr-red:#FF5B57;
-  --card-width: 360px;
+  --card-width: 350px;
   --mini-card-height:200px;
+  --bk:530px;
 }
 
 
@@ -18,19 +19,17 @@
 body{
   font-family: 'Josefin Slab', serif;
   background: var(--cr-bg);
-  /* overflow: hidden; */
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   display: grid;
   align-items: center;
 }  
 
 .ct-all{
-  width: 100%;
+  height: 99vh;
   display: grid;
-  grid-template-columns: minmax(150px, 15%) 85%;
+  grid-template-columns: 160px calc(100% - 160px);
   align-items: center;
-  justify-content: center;
 }
 
 .conteiner{
@@ -47,7 +46,6 @@ body{
 }
 
 .month-total{
-  /* background: red; */
   padding: 20px;
   text-align: center;
 }
@@ -72,11 +70,11 @@ body{
   font-size: 2.2;
 }
 
-@media screen and (max-width: 525px){
+@media screen and (max-width: 530px){
   .ct-all{
-    height: 100vh;
-    width: 100vw;
-    grid-template-rows: 70px calc(100% - 70px );
+    height: 99.6vh;
+    width: 99.6vw;
+    grid-template-rows: 60px calc(100% - 60px);
     grid-template-columns: none;
     align-items: start;
   }

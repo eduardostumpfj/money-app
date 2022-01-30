@@ -69,7 +69,7 @@
     background-position: center ;
 }
 
-@media screen and (max-width: 525px){
+@media screen and (max-width: 530px){
     .ct-total{
         align-self: start;
     }
