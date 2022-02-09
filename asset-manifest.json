@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/money-app/static/css/main.aecb84ba.css",
-    "main.js": "/money-app/static/js/main.dd7dea3d.js",
+    "main.css": "/money-app/static/css/main.29b3132f.css",
+    "main.js": "/money-app/static/js/main.302d0139.js",
     "index.html": "/money-app/index.html",
-    "main.aecb84ba.css.map": "/money-app/static/css/main.aecb84ba.css.map",
-    "main.dd7dea3d.js.map": "/money-app/static/js/main.dd7dea3d.js.map"
+    "main.29b3132f.css.map": "/money-app/static/css/main.29b3132f.css.map",
+    "main.302d0139.js.map": "/money-app/static/js/main.302d0139.js.map"
   },
   "entrypoints": [
-    "static/css/main.aecb84ba.css",
-    "static/js/main.dd7dea3d.js"
+    "static/css/main.29b3132f.css",
+    "static/js/main.302d0139.js"
   ]
 }
