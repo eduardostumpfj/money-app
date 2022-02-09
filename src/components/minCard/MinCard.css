@@ -3,6 +3,7 @@
 }
 
 .mini-card{
+    order: 1;
     position:relative;
     background: white;
     display: grid;
@@ -26,12 +27,12 @@
 }
 
 .bts-option{
+    order: 2;
     margin-left:10px;
     display: flex;
     flex-direction: column;
     gap: 10px;
     align-self: flex-start;
-
 }
 
 .button {
@@ -110,6 +111,23 @@
 }
 
 @media screen and (max-width: 530px){
+    .full-mini-card{
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .bts-option{
+        order: 1;
+        display: flex;
+        flex-direction: row;
+        align-self: flex-end;
+        margin-bottom: 10px;
+    }
+
+    .mini-card{
+        order: 2;
+    }
+
     .mini{
         margin-right: 20px;
     }
