@@ -52,8 +52,16 @@ function Item({nameItem, valueItem, id, updateItem, duplicateItem, deleteItem}){
         e.target.parentNode.parentNode.classList.add('on')
     }
     
+    function handleValue (e){
+        if(isNaN(e.target.value)){
+            return
+        }
+        setValue(e.target.value)
+    }
+
+
     return(
-        <div className='item' onClick={enable} id={id} onBlur={handleUpdate} autoFocus>
+        <div className='item' onClick={enable} id={id} onBlur={handleUpdate}>
             <div className='ct-form'>
                 <form className='item-form' onFocus={handleFocus}>
                     <input
@@ -68,18 +76,12 @@ function Item({nameItem, valueItem, id, updateItem, duplicateItem, deleteItem}){
                         
                     ></input>
                     <input
-                        max='2'
+                        maxLength='8'
                         className="item-value"
-                        type='number'  
+                        type='text'  
                         placeholder='valor'
                         value={value}
-                        onChange={event => {
-                            if(event.target.value.length > 8){
-                                return false
-                            } else{                                
-                                setValue(event.target.value)
-                            }
-                        }}
+                        onChange={handleValue}
                         ></input>
                 </form>
             </div>

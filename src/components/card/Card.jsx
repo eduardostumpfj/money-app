@@ -41,7 +41,7 @@ export default function Card({cardName, cardTotal, cardPeople, cardId, cardItemL
     
     // atualizar com o valor
     useEffect(() => {
-        updateTotal()    
+        updateTotal()
     }, [itemList])
     
     // atualizar o CardList
@@ -92,7 +92,7 @@ export default function Card({cardName, cardTotal, cardPeople, cardId, cardItemL
                 total:novoTotal.toFixed(2)
             }))
         }
-        setCallEffetct(prev => { return !prev})  
+        setCallEffetct(prev => { return !prev})
     }
 
     function addItem(){
@@ -103,7 +103,9 @@ export default function Card({cardName, cardTotal, cardPeople, cardId, cardItemL
         setItemList(prevItem => {
             return [...prevItem, {name:'',value:'', id:uuidv4()}]
         })
-        setCallEffetct(prev => { return !prev})  
+        setCallEffetct(prev => { return !prev})
+        // forçar um delay para pegar todos os ítens da lista e colocar o foco no último
+        setTimeout(focus,0) 
     }
 
     function updateItem(item){
@@ -121,12 +123,29 @@ export default function Card({cardName, cardTotal, cardPeople, cardId, cardItemL
         setItemList(prevItem => {
             return [...prevItem, {name:item.name, value:item.value, id:uuidv4()}]
         })
+        // forçar um delay para pegar todos os ítens da lista e colocar o foco no último
+        setTimeout(focus,0) 
     }
 
     function deleteItem(id){
         let novaList = itemList.filter( item => item.id !== id)
         setItemList(novaList)
     }
+
+    function focus(){
+        const items = document.querySelectorAll('.item')
+        const lastIndex = items.length - 1
+        items.forEach((e,i) =>{
+            if(i !== lastIndex){
+                e.firstChild.classList.remove('on')
+                e.lastChild.classList.add('off')
+            } else {
+                e.firstChild.classList.add('on')
+                e.lastChild.classList.remove('off')
+            }
+        })
+    }
+
     return(
         <div className="card">
             <CardName
