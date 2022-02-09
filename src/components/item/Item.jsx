@@ -76,7 +76,7 @@ function Item({nameItem, valueItem, id, updateItem, duplicateItem, deleteItem}){
                         
                     ></input>
                     <input
-                        maxLength='8'
+                        maxLength='6'
                         className="item-value"
                         type='text'  
                         placeholder='valor'
